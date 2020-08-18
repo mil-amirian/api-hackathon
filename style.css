@@ -1,0 +1,158 @@
+/* 
+font-family: 'Alata', sans-serif;
+font-family: 'Poppins', sans-serif;
+*/
+
+
+main {
+    background-color: #323232;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    margin-top: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #4c4c4c;
+    width: 375px;
+    height: 812px;
+    border-left: solid 2px black;
+    border-right: solid 2px black;
+
+}
+
+.title-container {
+    margin-bottom: 2rem;
+    height: 125px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #9f0d00;
+}
+
+.title {
+    color: white;
+    font-family: 'Alata', sans-serif;
+    margin: 0;
+}
+
+.dropdown-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+select {
+    width: 300px;
+    border-radius: 15px;
+    font-family: 'Poppins', sans-serif;
+    padding-left: 1rem;
+}
+
+
+.button-container {
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.randomBtn {
+    font-family: 'Poppins', sans-serif;
+    width: 300px;
+    height: 50px;
+    margin-top: 2rem;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    color: white;
+    background-color: #1077e4;
+    font-size: 20px;
+    
+}
+
+.randomBtn:hover {
+    background-color: #034081;
+}
+
+#superhero-card-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 3rem;
+    background-color: #323232;
+    height: 475px;
+    width: 300px;
+    border-radius: 15px;
+    border: solid 5px white;
+}
+
+.superhero-name {
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+    text-transform: uppercase;
+}
+
+.welcome-blurb-container {
+    width: 250px;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-blurb {
+    margin: 0;
+    padding: 0;
+    /* width: 220px; */
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: aliceblue;
+}
+
+.superhero-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 300px;
+}
+
+.image-container {
+    text-align: center;
+    border-radius: 15px;
+    background-color: #323232;
+    height: 300px;
+    width: 80%;
+    /* background-image: url("https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/images/md/1-a-bomb.jpg"); */
+    background-position: center;
+    background-size: cover;
+    border: solid 2px grey;
+}
+
+#question {
+    width: 250px;
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+}
+
+#answer {
+    width: 250px;
+    font-size: 12px;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    color: goldenrod;
+}
+
+.hidden {
+    display: none;
+}

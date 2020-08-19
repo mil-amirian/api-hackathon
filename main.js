@@ -117,9 +117,13 @@ function createHeroDomElements() {
             let jokePunchline = document.createElement('h4')
             jokePunchline.setAttribute('id', 'answer')
             jokePunchline.textContent = joke.punchline
-            jokeContainer.append(jokeSetup, jokePunchline)
+            jokeContainer.append(jokeSetup)
             superheroContainer.append(heroTitle, heroImage, jokeContainer)
+            
             heroCardContainer.append(superheroContainer)
+            setInterval(function () {
+                jokeContainer.append(jokePunchline)
+            }, 0)
 
         }
     }

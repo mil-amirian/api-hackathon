@@ -154,6 +154,7 @@ function createMeme(userInput, selectedHero) {
             heroImage.append(memeCaption)
             superheroContainer.append(heroImage)
             heroCardContainer.append(superheroContainer)
+            
         }
     }
 }
@@ -180,6 +181,7 @@ function memeCreator() {
             console.log(userMemeInputText, memeCharacterSelected)
             createMeme(userMemeInputText, memeCharacterSelected)
             memeModal.classList.add('hidden')
+            
 
         } else {
             memeSuperheroMenu.style.border = 'solid 3px red'
@@ -187,6 +189,7 @@ function memeCreator() {
             memeModalContent.style.border = 'none'
         }
     })
+    
 }
 
 // ********************************************************

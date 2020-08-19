@@ -14,12 +14,13 @@
                 <h1 class="title">COMIC HEROES</h1>
             </div>
             <div class="dropdown-container">
-                <select name="superhero-list" id="superhero-list" class="select">
+                <select name="superhero-list" id="superhero-list" class="main-select">
                     <option selected="selected">Select your hero</option>
                 </select>
             </div>
             <div class="button-container">
                 <button class="randomBtn">RANDOM HERO</button>
+                <button class="memeBtn">CREATE MEME</button>
             </div>
             <div id="superhero-card-container">
                 <div class="welcome-blurb-container">
@@ -27,8 +28,17 @@
                     <h1 class="superhero-name">COMIC HEROES</h1>
                     <p class="welcome-blurb">Where your favorite superheroes try their hand at standup comedy!</p>
                 </div>
-
-                
+            </div>
+            <div class="meme-modal hidden">
+                <div class="meme-modal-content">
+                    <div class="dropdown-container">
+                        <select name="superhero-list" id="superhero-list" class="meme-select">
+                            <option selected="selected">Select your hero</option>
+                        </select>
+                    </div>
+                    <textarea name="meme-input" id="meme-input" cols="30" rows="10"></textarea>
+                    <button class="meme-input">Create Meme</button>
+                </div>
             </div>
         </div>
 

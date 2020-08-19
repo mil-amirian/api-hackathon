@@ -199,7 +199,7 @@ select {
     background-color: #323232;
     border: 5px solid #9f0d00;
     width: 325px;
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     align-items: center;

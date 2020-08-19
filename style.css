@@ -184,6 +184,7 @@ select {
     text-shadow: 2px 2px 4px #000000;}
 
 .meme-modal {
+    background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
     top: 0;
     display: flex;
@@ -204,7 +205,12 @@ select {
     align-items: center;
     justify-content: space-around;
     box-shadow: 5px 5px 20px;
+  }
 
+  textarea {
+    border-radius: 15px;
+    padding: 10px;
+    text-align: center;
   }
 
 .hidden {

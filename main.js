@@ -71,15 +71,6 @@ function resetCard() {
     getRandomJoke()
 }
 
-function generateDropDownList() {
-    for (let i = 0; i < superHeroList.length; i++) {
-        let dropDownItem = document.createElement('option')
-        dropDownItem.textContent = superHeroList[i].name
-        listContainer.append(dropDownItem)
-    }
-    return superHeroList
-}
-
 function hideWelcomeBlurb() {
     welcomeBlurb.className = 'hidden welcome-blurb-container'
 }
@@ -89,6 +80,15 @@ function removeExistingCard() {
     if (currentDisplayedCard) {
         currentDisplayedCard.remove()
     }
+}
+
+function generateDropDownList() {
+    for (let i = 0; i < superHeroList.length; i++) {
+        let dropDownItem = document.createElement('option')
+        dropDownItem.textContent = superHeroList[i].name
+        listContainer.append(dropDownItem)
+    }
+    return superHeroList
 }
 
 function superheroGenerateJoke() {
@@ -130,7 +130,6 @@ function createHeroDomElements() {
             jokePunchline.textContent = joke.punchline
             jokeContainer.append(jokeSetup)
             superheroContainer.append(heroTitle, heroImage, jokeContainer)
-            
             heroCardContainer.append(superheroContainer)
             setInterval(function () {
                 jokeContainer.append(jokePunchline)

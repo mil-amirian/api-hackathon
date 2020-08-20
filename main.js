@@ -28,9 +28,6 @@ let memeCharacterSelected = null
  // ******* AJAX CALLS *******
 function getSuperHeroes() {
     $.ajax({
-        // headers: {
-        //     "X-Access-Token": "4182605258481258"
-        // },
         url: "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json",
         method: "GET",
         success: function (result) {
@@ -42,8 +39,8 @@ function getSuperHeroes() {
             generateRandomHero()
             memeCreator()
         },
-        error: function(result) {
-            console.log(`Error getting data`)
+        error: function() {
+            console.error(`Error getting data`)
         }
     })
 }
@@ -55,8 +52,8 @@ function getRandomJoke() {
             joke.setup = result[0].setup
             joke.punchline = result[0].punchline
         },
-        error: function(result) {
-            console.log(`Error getting data`)
+        error: function() {
+            console.error(`Error getting data`)
         }
     })
 }

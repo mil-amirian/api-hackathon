@@ -12,6 +12,7 @@ let memeModal = document.querySelector('.meme-modal')
 let memeModalContent = document.querySelector('.meme-modal-content')
 let memeTextArea = document.getElementById('meme-input')
 let memeSubmit = document.querySelector('.meme-input')
+let cancelBtn = document.querySelector('.close-modal')
 //  ********************************************************
 
 
@@ -172,7 +173,7 @@ function memeCreator() {
         console.log('hello')
         memeModal.classList.remove('hidden')
         memeDropDownList()
-        
+        cancel()        
     })
     memeSubmit.addEventListener('click', function () {
         if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
@@ -190,6 +191,12 @@ function memeCreator() {
         }
     })
     
+}
+
+function cancel() {
+    cancelBtn.addEventListener('click', function () {
+        memeModal.classList.add('hidden')
+    })
 }
 
 // ********************************************************

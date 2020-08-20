@@ -117,7 +117,7 @@ select {
     align-items: center;
     margin-top: 2.2rem;
     background-color: #323232;
-    height: 550px;
+    height: auto;
     width: 300px;
     border-radius: 15px;
     border: solid 5px white;
@@ -153,7 +153,8 @@ select {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 300px;
+    width: 280px;
+
 }
 
 .image-container {
@@ -161,7 +162,7 @@ select {
     text-align: center;
     border-radius: 15px;
     background-color: #323232;
-    height: 350px;
+    height: 250px;
     width: 80%;
     background-position: center;
     background-size: cover;

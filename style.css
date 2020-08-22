@@ -65,7 +65,7 @@ select {
     display: flex;
 }
 
-.randomBtn, .memeBtn {
+.random-btn, .meme-btn {
     margin: 0rem 1.5rem;
     padding: 15px;
     font-family: 'Poppins', sans-serif;
@@ -77,24 +77,24 @@ select {
     cursor: pointer;
 }
 
-.memeBtn {
+.meme-btn {
     color: whitesmoke;
     background-color: #123b3f;
 }
 
-.memeBtn:hover {
+.meme-btn:hover {
     background-color: #1b5b61;
     color: whitesmoke;
     box-shadow: inset 0 0 10px #123b3f;   
 
 }
 
-.randomBtn {
+.random-btn {
     color: white;
     background-color: #fa8500;
 }
 
-.randomBtn:hover {
+.random-btn:hover {
     background-color: #fa8500;
     box-shadow: inset 0 0 10px #703c00;  
 

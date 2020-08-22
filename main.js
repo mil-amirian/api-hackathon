@@ -1,4 +1,3 @@
-//  ******* DOM Variable Assignments *******
 let superheroMenu = document.querySelector('.main-select')
 let memeSuperheroMenu = document.querySelector('.meme-select')
 let heroCardContainer = document.getElementById('superhero-card-container')
@@ -13,19 +12,14 @@ let memeModalContent = document.querySelector('.meme-modal-content')
 let memeTextArea = document.getElementById('meme-input')
 let memeSubmit = document.querySelector('.meme-input')
 let cancelBtn = document.querySelector('.close-modal')
-//  ********************************************************
 
-
-// ******* Variable placeholders *******
 const superHeroList = []
 const joke = {}
 let currentlySelectedHero = null
 let userMemeInputText = null
 let memeCharacterSelected = null
-//  ********************************************************
 
 
- // ******* AJAX CALLS *******
 function getSuperHeroes() {
     $.ajax({
         url: "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json",
@@ -35,12 +29,13 @@ function getSuperHeroes() {
                 superHeroList.push({name: result[i].name, image: result[i].images.md, id: result[i].id})
             }
             generateDropDownList()
-            superheroGenerateJoke()
-            generateRandomHero()
-            memeCreator()
+            superheroMenu.addEventListener('change', superheroGenerateJoke)
+            randomBtn.addEventListener('click', generateRandomHero)
+            memeBtn.addEventListener('click', showMemeModal)
+            memeSubmit.addEventListener('click', memeCreator)
         },
-        error: function() {
-            console.error(`Error getting data`)
+        error: function(error) {
+            console.error(error)
         }
     })
 }
@@ -52,15 +47,11 @@ function getRandomJoke() {
             joke.setup = result[0].setup
             joke.punchline = result[0].punchline
         },
-        error: function() {
-            console.error(`Error getting data`)
+        error: function(error) {
+            console.error(error)
         }
     })
 }
-// *******************************************
-
-
-// ******* FUNCTION DEFINITIONS *******
 
 function resetCard() {
     hideWelcomeBlurb()
@@ -89,71 +80,74 @@ function generateDropDownList() {
 }
 
 function superheroGenerateJoke() {
-    superheroMenu.addEventListener('change', function () {
         currentlySelectedHero = event.path[1].firstElementChild.value
         createHeroDomElements()
-    })
 }
 
 function generateRandomHero() {
-    randomBtn.addEventListener('click', function () {
         let randomNumber = Math.floor(Math.random() * superHeroList.length)
         currentlySelectedHero = superHeroList[randomNumber].name
         createHeroDomElements()
         superheroMenu.value = 'Select your hero'
-    })
-    
 }
 
 function createHeroDomElements() {
+    let heroMatch = null
     for (let i = 0; i < superHeroList.length; i++) {
         if (currentlySelectedHero === superHeroList[i].name) {
-            resetCard()
-            let superheroContainer = document.createElement('div')
-            superheroContainer.classList.add('superhero-card')
-            let heroTitle = document.createElement('h3')
-            heroTitle.classList.add('superhero-name')
-            heroTitle.textContent = currentlySelectedHero
-            let heroImage = document.createElement('div')
-            heroImage.classList.add('image-container')
-            heroImage.style.backgroundImage = "url" + "(" + `${superHeroList[i].image}` + ")"
-            let jokeContainer = document.createElement('div')
-            jokeContainer.className = 'joke-container'
-            let jokeSetup = document.createElement('h4')
-            jokeSetup.setAttribute('id', 'question')
-            jokeSetup.textContent = joke.setup
-            let jokePunchline = document.createElement('h4')
-            jokePunchline.setAttribute('id', 'answer')
-            jokePunchline.textContent = joke.punchline
-            jokeContainer.append(jokeSetup)
-            superheroContainer.append(heroTitle, heroImage, jokeContainer)
-            heroCardContainer.append(superheroContainer)
-            setInterval(function () {
-                jokeContainer.append(jokePunchline)
-            }, 0)
-
+            heroMatch = superHeroList[i]
+            break;
         }
     }
+    resetCard()
+    let superheroContainer = document.createElement('div')
+    superheroContainer.classList.add('superhero-card')
+    let heroTitle = document.createElement('h3')
+    heroTitle.classList.add('superhero-name')
+    heroTitle.textContent = currentlySelectedHero
+    let heroImage = document.createElement('div')
+    heroImage.classList.add('image-container')
+    heroImage.style.backgroundImage = "url" + "(" + `${heroMatch.image}` + ")"
+    let jokeContainer = document.createElement('div')
+    jokeContainer.className = 'joke-container'
+    let jokeSetup = document.createElement('h4')
+    jokeSetup.setAttribute('id', 'question')
+    jokeSetup.textContent = joke.setup
+    let jokePunchline = document.createElement('h4')
+    jokePunchline.setAttribute('id', 'answer')
+    jokePunchline.textContent = joke.punchline
+    jokeContainer.append(jokeSetup)
+    superheroContainer.append(heroTitle, heroImage, jokeContainer)
+    heroCardContainer.append(superheroContainer)
+    setInterval(function () {
+        jokeContainer.append(jokePunchline)
+    }, 0)
 }
 
 function createMeme(userInput, selectedHero) {
+    let heroMatch = null
     for (let i = 0; i < superHeroList.length; i++) {
         if (selectedHero === superHeroList[i].name) {
-            resetCard()
-            let superheroContainer = document.createElement('div')
-            superheroContainer.classList.add('superhero-card')
-            let heroImage = document.createElement('div')
-            heroImage.classList.add('image-container')
-            heroImage.style.backgroundImage = "url" + "(" + `${superHeroList[i].image}` + ")"
-            let memeCaption = document.createElement('h2')
-            memeCaption.textContent = userInput
-            memeCaption.className = 'meme-caption'
-            heroImage.append(memeCaption)
-            superheroContainer.append(heroImage)
-            heroCardContainer.append(superheroContainer)
-            
+            heroMatch = superHeroList[i]
+            break;
         }
     }
+    let superheroContainer = document.createElement('div')
+    resetCard()
+    superheroContainer.classList.add('superhero-card')
+    let heroImage = document.createElement('div')
+    heroImage.classList.add('image-container')
+    heroImage.style.backgroundImage = "url" + "(" + `${heroMatch.image}` + ")"
+    heroImage.style.height = '350px'
+    heroImage.style.width = '100%'
+    heroImage.style.padding = '0px'
+    heroImage.style.margin = '0px'
+    let memeCaption = document.createElement('h2')
+    memeCaption.textContent = userInput
+    memeCaption.className = 'meme-caption'
+    heroImage.append(memeCaption)
+    superheroContainer.append(heroImage)
+    heroCardContainer.append(superheroContainer)
 }
 
 function memeDropDownList() {
@@ -164,29 +158,31 @@ function memeDropDownList() {
     }
 }
 
-function memeCreator() {
-    memeBtn.addEventListener('click', function () {
-        console.log('hello')
-        memeModal.classList.remove('hidden')
-        memeDropDownList()
-        cancel()        
-    })
-    memeSubmit.addEventListener('click', function () {
-        if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
-            memeCharacterSelected = memeSuperheroMenu.value
-            userMemeInputText = memeTextArea.value
-            console.log(userMemeInputText, memeCharacterSelected)
-            createMeme(userMemeInputText, memeCharacterSelected)
-            memeModal.classList.add('hidden')
-            
+function showMemeModal() {
+    memeModal.classList.remove('hidden')
+    memeDropDownList()
+    cancel()
+}
 
-        } else {
-            memeSuperheroMenu.style.border = 'solid 3px red'
-            memeTextArea.style.border = 'solid 3px red'
-            memeModalContent.style.border = 'none'
-        }
-    })
-    
+function checkModalUserEntryIsNotEmpty() {
+    memeCharacterSelected = memeSuperheroMenu.value
+    userMemeInputText = memeTextArea.value
+    createMeme(userMemeInputText, memeCharacterSelected)
+    memeModal.classList.add('hidden')
+}
+
+function ifModalUserEntryIsEmpty() {
+    memeSuperheroMenu.style.border = 'solid 3px red'
+    memeTextArea.style.border = 'solid 3px red'
+    memeModalContent.style.border = 'none'
+}
+
+function memeCreator() {
+    if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
+        checkModalUserEntryIsNotEmpty()
+    } else {
+        ifModalUserEntryIsEmpty()
+    }
 }
 
 function cancel() {
@@ -195,10 +191,5 @@ function cancel() {
     })
 }
 
-// ********************************************************
-
-// ******* APP START FUNCTION CALLS *******
 getSuperHeroes()
 getRandomJoke()
-
-// ********************************************************

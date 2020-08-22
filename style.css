@@ -3,44 +3,43 @@ font-family: 'Alata', sans-serif;
 font-family: 'Poppins', sans-serif;
 */
 
-* {
-    background-color: #323232;
+
+body {
+    box-sizing: border-box;
+    margin: 0;
+    background-image: url(images/gotham-hero.jpg);
+    background-size: cover;
 }
 
 main {
-    background-color: #323232;
     display: flex;
     justify-content: center;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
-    margin-top: 0;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #4c4c4c;
-    width: 375px;
-    height: 812px;
-    border-left: solid 2px black;
-    border-right: solid 2px black;
-
+    width: 100vw;
+    min-height: 100vh;
 }
 
 .title-container {
     margin-bottom: 1rem;
-    height: 75px;
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #9f0d00;
+    background-color: #134247;
     box-shadow: 0px 0px 10px 0px;
 
 }
 
 .title {
-    background-color: #9f0d00;
     color: white;
     font-family: 'Alata', sans-serif;
     margin: 0;
@@ -49,10 +48,6 @@ main {
 .dropdown-container {
     height: 50px;
     display: flex;
-    justify-content: center;
-    align-content: center;
-    background-color: inherit;
-
 }
 
 select {
@@ -64,67 +59,60 @@ select {
     box-shadow: inset 0 0 10px lightgray;
     cursor: pointer;
     background-color: white;
-
-
 }
 
 .button-container {
-    height: 50px;
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #4c4c4c;
-
 }
 
 .randomBtn, .memeBtn {
     margin: 0rem 1.5rem;
     padding: 15px;
     font-family: 'Poppins', sans-serif;
-    height: 50px;
     margin-top: 2rem;
     border-radius: 15px;
     outline: none;
-    border: none;
+    border: solid 0.5px grey;
     font-size: 12px;
     cursor: pointer;
 }
 
 .memeBtn {
-    color: black;
-    background-color: #88e410;
-    box-shadow: inset 0 0 10px rgb(20, 119, 0);   
+    color: whitesmoke;
+    background-color: #123b3f;
 }
 
 .memeBtn:hover {
-    background-color: #027007;
+    background-color: #1b5b61;
+    color: whitesmoke;
+    box-shadow: inset 0 0 10px #123b3f;   
+
 }
 
 .randomBtn {
     color: white;
-    background-color: #1077e4;
-    box-shadow: inset 0 0 10px darkblue;  
+    background-color: #fa8500;
 }
 
 .randomBtn:hover {
-    background-color: #034081;
+    background-color: #fa8500;
+    box-shadow: inset 0 0 10px #703c00;  
+
 }
 
 #superhero-card-container {
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    margin-top: 2.2rem;
-    background-color: #323232;
+    margin-top: 1.5rem;
+    background-color: #1b5b61;
     height: auto;
     width: 300px;
     border-radius: 15px;
     border: solid 5px white;
-    box-shadow: 5px 5px 20px;
+    box-shadow: 0 8px 6px -6px black;
 }
 
-.superhero-name {
+.superhero-name, .superhero-name-blurb {
     font-family: 'Poppins', sans-serif;
     color: aliceblue;
     text-transform: uppercase;
@@ -133,17 +121,15 @@ select {
 .welcome-blurb-container {
     width: 250px;
     display: flex;
-    text-align: center;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     padding: 1rem;
+    margin: 4rem 0;
 }
 
 .welcome-blurb {
     margin: 0;
     padding: 0;
-    /* width: 220px; */
     text-align: center;
     font-family: 'Poppins', sans-serif;
     color: aliceblue;
@@ -188,22 +174,27 @@ select {
 
 .meme-caption {
     position: absolute;
+    display: flex;
+    justify-content: center;
     bottom: 0;
-    right: 0;
+    right: 0.1rem;
+    left: 0.1rem;
     display: flex;
     align-items: flex-start;
     text-transform: uppercase;
     font-family: sans-serif;
     color: white;
     font-weight: 600;
-    text-shadow: 2px 2px 4px #000000;
+    text-shadow: 2px 2px 4px #00000050;
     background-color: inherit;
+    max-width: 280px;
+    overflow: hidden;
+    background-color: #20202073;
 }
 
 .meme-modal {
     background-color: rgba(0, 0, 0, 0.7);
     position: fixed;
-    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -223,61 +214,143 @@ select {
     align-items: center;
     justify-content: space-around;
     box-shadow: 5px 5px 20px;
-  }
+}
 
-  textarea {
-    border-radius: 15px;
-    padding: 10px;
-    text-align: center;
-    outline: none;
-    color: white;
-  }
+textarea {
+border-radius: 15px;
+padding: 10px;
+text-align: center;
+outline: none;
+color: white;
+background-color: #1f1e1e;
+}
 
-  .meme-input {
-    font-family: 'Poppins', sans-serif;
-    /* height: 50px; */
-    padding: 10px;
-    margin-bottom: 0.2rem;
-    border-radius: 15px;
-    outline: none;
-    border: none;
-    font-size: 12px;
-    color: black;
-    background-color: #88e410;
-    box-shadow: inset 0 0 10px rgb(20, 119, 0);
-    cursor: pointer;
-    border: solid 2px lime;
-  }
+.meme-input {
+font-family: 'Poppins', sans-serif;
+/* height: 50px; */
+padding: 10px;
+margin-bottom: 0.2rem;
+border-radius: 15px;
+outline: none;
+border: none;
+font-size: 12px;
+color: whitesmoke;
+background-color: rgb(0, 138, 140);
+box-shadow: inset 0 0 10px rgb(0, 102, 104);
+cursor: pointer;
+border: solid 2px rgb(1, 90, 92);
+}
 
-  .meme-input:hover {
-    background-color: #027007;
-    color: white;
-  }
+.meme-input:hover {
+background-color: rgb(1, 199, 202);
+color: black;
+}
 
-  .buttons {
-      display: flex;
-  }
+.buttons {
+    display: flex;
+}
 
-  .close-modal {
-    font-family: 'Poppins', sans-serif;
-    padding: 10px;
-    margin-bottom: 0.2rem;
-    border-radius: 15px;
-    outline: none;
-    border: none;
-    font-size: 12px;
-    color: black;
-    background-color: #c71313;
-    box-shadow: inset 0 0 10px rgb(87, 1, 1);
-    cursor: pointer;
-    margin-left: 1rem;
-    color: whitesmoke;
-    border: solid 2px grey;
-  }
+.close-modal {
+font-family: 'Poppins', sans-serif;
+padding: 10px;
+margin-bottom: 0.2rem;
+border-radius: 15px;
+outline: none;
+border: none;
+font-size: 12px;
+color: black;
+background-color: #c71313;
+box-shadow: inset 0 0 10px rgb(87, 1, 1);
+cursor: pointer;
+margin-left: 1rem;
+color: whitesmoke;
+border: solid 2px maroon;
+font-weight: 600;
+}
 
-  .close-modal:hover {
-    background-color: #700202;
-    color: white;
+.close-modal:hover {
+background-color: #700202;
+color: white;
+}
+
+@media only screen and (min-width: 750px) {
+    #superhero-card-container {
+        display: flex;
+        justify-content: center;
+        margin-top: 3rem;
+        background-color: #1b5b61;
+        height: 65vh;
+        width: 65%;
+        border-radius: 15px;
+        border: solid 5px white;
+        box-shadow: 0 8px 6px -6px black;
+    }
+
+    .superhero-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        /* width: 80vw; */
+    }
+
+    .image-container {
+        position: relative;
+        text-align: center;
+        border-radius: 15px;
+        background-color: #323232;
+        height: 50vh;
+        width: 25vw;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border: solid 2px grey;
+        margin: 0 2rem;
+    }
+
+    .superhero-name-blurb {
+        font-family: 'Poppins', sans-serif;
+        color: aliceblue;
+        text-transform: uppercase;
+        font-size: 45px;
+    }
+
+    .welcome-blurb-container {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        align-items: center;
+        padding: 1rem;
+        margin: 0 0;
+    }
+
+    .welcome-blurb {
+        font-size: 24px;
+        max-width: 75%;
+    }
+
+    .joke-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #question {
+        width: 50vw;
+        font-size: 13px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: white;
+    }
+    
+    #answer {
+        margin-top: 0;
+        width: 50vw;
+        font-size: 16px;
+        text-align: center;
+        font-family: 'Poppins', sans-serif;
+        color: goldenrod;
+    }
   }
 
 .hidden {

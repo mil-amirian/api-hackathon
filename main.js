@@ -12,6 +12,7 @@ let memeModal = document.querySelector('.meme-modal')
 let memeModalContent = document.querySelector('.meme-modal-content')
 let memeTextArea = document.getElementById('meme-input')
 let memeSubmit = document.querySelector('.meme-input')
+let cancelBtn = document.querySelector('.close-modal')
 //  ********************************************************
 
 
@@ -27,9 +28,6 @@ let memeCharacterSelected = null
  // ******* AJAX CALLS *******
 function getSuperHeroes() {
     $.ajax({
-        // headers: {
-        //     "X-Access-Token": "4182605258481258"
-        // },
         url: "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json",
         method: "GET",
         success: function (result) {
@@ -41,8 +39,8 @@ function getSuperHeroes() {
             generateRandomHero()
             memeCreator()
         },
-        error: function(result) {
-            console.log(`Error getting data`)
+        error: function() {
+            console.error(`Error getting data`)
         }
     })
 }
@@ -54,8 +52,8 @@ function getRandomJoke() {
             joke.setup = result[0].setup
             joke.punchline = result[0].punchline
         },
-        error: function(result) {
-            console.log(`Error getting data`)
+        error: function() {
+            console.error(`Error getting data`)
         }
     })
 }
@@ -70,15 +68,6 @@ function resetCard() {
     getRandomJoke()
 }
 
-function generateDropDownList() {
-    for (let i = 0; i < superHeroList.length; i++) {
-        let dropDownItem = document.createElement('option')
-        dropDownItem.textContent = superHeroList[i].name
-        listContainer.append(dropDownItem)
-    }
-    return superHeroList
-}
-
 function hideWelcomeBlurb() {
     welcomeBlurb.className = 'hidden welcome-blurb-container'
 }
@@ -88,6 +77,15 @@ function removeExistingCard() {
     if (currentDisplayedCard) {
         currentDisplayedCard.remove()
     }
+}
+
+function generateDropDownList() {
+    for (let i = 0; i < superHeroList.length; i++) {
+        let dropDownItem = document.createElement('option')
+        dropDownItem.textContent = superHeroList[i].name
+        listContainer.append(dropDownItem)
+    }
+    return superHeroList
 }
 
 function superheroGenerateJoke() {
@@ -129,7 +127,6 @@ function createHeroDomElements() {
             jokePunchline.textContent = joke.punchline
             jokeContainer.append(jokeSetup)
             superheroContainer.append(heroTitle, heroImage, jokeContainer)
-            
             heroCardContainer.append(superheroContainer)
             setInterval(function () {
                 jokeContainer.append(jokePunchline)
@@ -172,7 +169,7 @@ function memeCreator() {
         console.log('hello')
         memeModal.classList.remove('hidden')
         memeDropDownList()
-        
+        cancel()        
     })
     memeSubmit.addEventListener('click', function () {
         if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
@@ -190,6 +187,12 @@ function memeCreator() {
         }
     })
     
+}
+
+function cancel() {
+    cancelBtn.addEventListener('click', function () {
+        memeModal.classList.add('hidden')
+    })
 }
 
 // ********************************************************

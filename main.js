@@ -1,10 +1,17 @@
 //  ******* DOM Variable Assignments *******
-let superheroMenu = document.querySelector('select')
+let superheroMenu = document.querySelector('.main-select')
+let memeSuperheroMenu = document.querySelector('.meme-select')
 let heroCardContainer = document.getElementById('superhero-card-container')
 let heroContainer = document.querySelector('.superhero-card')
-let listContainer = document.querySelector('select')
+let listContainer = document.querySelector('.main-select')
+let memeSelectHero = document.querySelector('.meme-select')
 let welcomeBlurb = document.querySelector('.welcome-blurb-container')
 let randomBtn = document.querySelector('.randomBtn')
+let memeBtn = document.querySelector('.memeBtn')
+let memeModal = document.querySelector('.meme-modal')
+let memeModalContent = document.querySelector('.meme-modal-content')
+let memeTextArea = document.getElementById('meme-input')
+let memeSubmit = document.querySelector('.meme-input')
 //  ********************************************************
 
 
@@ -12,6 +19,8 @@ let randomBtn = document.querySelector('.randomBtn')
 const superHeroList = []
 const joke = {}
 let currentlySelectedHero = null
+let userMemeInputText = null
+let memeCharacterSelected = null
 //  ********************************************************
 
 
@@ -30,6 +39,7 @@ function getSuperHeroes() {
             generateDropDownList()
             superheroGenerateJoke()
             generateRandomHero()
+            memeCreator()
         },
         error: function(result) {
             console.log(`Error getting data`)
@@ -38,11 +48,11 @@ function getSuperHeroes() {
 }
 function getRandomJoke() {
     $.ajax({
-        url: "https://official-joke-api.appspot.com/random_joke",
+        url: "https://official-joke-api.appspot.com/jokes/programming/random",
         method: "GET",
-        success: function(result) {
-            joke.setup = result.setup
-            joke.punchline = result.punchline
+        success: function (result) {
+            joke.setup = result[0].setup
+            joke.punchline = result[0].punchline
         },
         error: function(result) {
             console.log(`Error getting data`)
@@ -128,6 +138,60 @@ function createHeroDomElements() {
         }
     }
 }
+
+function createMeme(userInput, selectedHero) {
+    for (let i = 0; i < superHeroList.length; i++) {
+        if (selectedHero === superHeroList[i].name) {
+            resetCard()
+            let superheroContainer = document.createElement('div')
+            superheroContainer.classList.add('superhero-card')
+            let heroImage = document.createElement('div')
+            heroImage.classList.add('image-container')
+            heroImage.style.backgroundImage = "url" + "(" + `${superHeroList[i].image}` + ")"
+            let memeCaption = document.createElement('h2')
+            memeCaption.textContent = userInput
+            memeCaption.className = 'meme-caption'
+            heroImage.append(memeCaption)
+            superheroContainer.append(heroImage)
+            heroCardContainer.append(superheroContainer)
+            
+        }
+    }
+}
+
+function memeDropDownList() {
+    for (let i = 0; i < superHeroList.length; i++) {
+        let dropDownItem = document.createElement('option')
+        dropDownItem.textContent = superHeroList[i].name
+        memeSelectHero.append(dropDownItem)
+    }
+}
+
+function memeCreator() {
+    memeBtn.addEventListener('click', function () {
+        console.log('hello')
+        memeModal.classList.remove('hidden')
+        memeDropDownList()
+        
+    })
+    memeSubmit.addEventListener('click', function () {
+        if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
+            memeCharacterSelected = memeSuperheroMenu.value
+            userMemeInputText = memeTextArea.value
+            console.log(userMemeInputText, memeCharacterSelected)
+            createMeme(userMemeInputText, memeCharacterSelected)
+            memeModal.classList.add('hidden')
+            
+
+        } else {
+            memeSuperheroMenu.style.border = 'solid 3px red'
+            memeTextArea.style.border = 'solid 3px red'
+            memeModalContent.style.border = 'none'
+        }
+    })
+    
+}
+
 // ********************************************************
 
 // ******* APP START FUNCTION CALLS *******

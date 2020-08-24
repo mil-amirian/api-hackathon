@@ -1,6 +1,6 @@
 # API Hackathon
 
-A hackathon project created utilizing the data from two public APIs - namely programmer jokes and superheroes. 
+A hackathon project created utilizing the data from two public APIs - namely; programmer jokes and superheroes. 
 
 ## Live Site
 

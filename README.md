@@ -6,6 +6,8 @@ A hackathon project created utilizing the data from two public APIs - namely pro
 
 https://mil-amirian.github.io/api-hackathon/
 
+![COMIC_HEROES](https://user-images.githubusercontent.com/62856013/91100874-c95bdb80-e61a-11ea-90de-131690da6aad.jpg)
+
 
 
 ## Checkout my portfolio

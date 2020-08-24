@@ -19,7 +19,6 @@ let currentlySelectedHero = null
 let userMemeInputText = null
 let memeCharacterSelected = null
 
-
 function getSuperHeroes() {
     $.ajax({
         url: "https://cdn.rawgit.com/akabab/superhero-api/0.2.0/api/all.json",
@@ -40,17 +39,23 @@ function getSuperHeroes() {
     })
 }
 function getRandomJoke() {
-    $.ajax({
-        url: "https://official-joke-api.appspot.com/jokes/programming/random",
-        method: "GET",
-        success: function (result) {
-            joke.setup = result[0].setup
-            joke.punchline = result[0].punchline
-        },
-        error: function(error) {
-            console.error(error)
-        }
-    })
+    randomBtn.removeEventListener('click', generateRandomHero)
+    setTimeout(function () {
+        $.ajax({
+            url: "https://official-joke-api.appspot.com/jokes/programming/random",
+            method: "GET",
+            success: function (result) {
+                randomBtn.addEventListener('click', generateRandomHero)
+                randomBtn.style.backgroundColor = '#fa8500'
+                joke.setup = result[0].setup
+                joke.punchline = result[0].punchline
+            },
+            error: function(error) {
+                console.error(error)
+            }
+        })
+    }, 1000)
+    
 }
 
 function resetCard() {
@@ -85,6 +90,7 @@ function superheroGenerateJoke() {
 }
 
 function generateRandomHero() {
+    randomBtn.style.backgroundColor = 'lightgrey'
         let randomNumber = Math.floor(Math.random() * superHeroList.length)
         currentlySelectedHero = superHeroList[randomNumber].name
         createHeroDomElements()

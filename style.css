@@ -135,6 +135,16 @@ select {
     color: aliceblue;
 }
 
+.superhero-name-blurb {
+    font-family: 'Alata', sans-serif;
+    background-color: #123b3f;
+    text-align: center;
+    width: 100%;
+    padding: 15px;
+    border-radius: 15px;
+    font-size: 20px;
+}
+
 .superhero-card {
     display: flex;
     flex-direction: column;
@@ -273,56 +283,48 @@ background-color: #700202;
 color: white;
 }
 
-@media only screen and (min-width: 750px) {
+@media only screen and (min-width: 350px) {
+    .meme-btn, .random-btn {
+        margin-top: 10px;
+    }
+
     #superhero-card-container {
-        display: flex;
-        justify-content: center;
+        margin-top: 10px;
+    }
+}
+
+@media only screen and (min-width: 400px) {
+    .meme-btn, .random-btn {
+        margin: 1rem 1.5rem;
+    }
+
+}
+
+@media only screen and (min-width: 750px) {
+    .superhero-name {
+        font-size: 30px;
+        margin: 1rem 0;
+    }
+
+    #superhero-card-container {
         margin-top: 3rem;
         background-color: #1b5b61;
         height: 65vh;
         width: 65%;
-        border-radius: 15px;
-        border: solid 5px white;
-        box-shadow: 0 8px 6px -6px black;
-    }
-
-    .superhero-card {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        /* width: 80vw; */
     }
 
     .image-container {
-        position: relative;
-        text-align: center;
-        border-radius: 15px;
-        background-color: #323232;
         height: 50vh;
-        width: 25vw;
-        background-position: center;
-        background-size: cover;
-        background-repeat: no-repeat;
-        border: solid 2px grey;
-        margin: 0 2rem;
+        width: 35vw;
     }
 
     .superhero-name-blurb {
-        font-family: 'Poppins', sans-serif;
-        color: aliceblue;
-        text-transform: uppercase;
         font-size: 45px;
     }
 
     .welcome-blurb-container {
         width: 50vw;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
-        align-items: center;
-        padding: 1rem;
-        margin: 0 0;
+        justify-content: space-around;
     }
 
     .welcome-blurb {
@@ -330,28 +332,34 @@ color: white;
         max-width: 75%;
     }
 
-    .joke-container {
-        display: flex;
-        flex-direction: column;
-    }
-
     #question {
         width: 50vw;
-        font-size: 13px;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        color: white;
+        font-size: 16px;
     }
     
     #answer {
-        margin-top: 0;
         width: 50vw;
         font-size: 16px;
-        text-align: center;
-        font-family: 'Poppins', sans-serif;
-        color: goldenrod;
     }
-  }
+}
+
+@media only screen and (min-width: 900px) {
+    .image-container {
+        width: 30vw;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .image-container {
+        width: 25vw;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .image-container {
+        width: 20vw;
+    }
+}
 
 .hidden {
     display: none;

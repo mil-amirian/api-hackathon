@@ -24,6 +24,16 @@ https://mil-amirian.github.io/comic-heroes/
 ## Preview
 ![Screen Shot 2020-08-24 at 3 51 50 PM](https://user-images.githubusercontent.com/62856013/91104030-c2849700-e621-11ea-9f5a-5234edc111f9.png)
 
+## Development
+
+#### Clone the repository
+
+```bash
+git clone https://github.com/mil-amirian/portfolio.git
+cd porfolio
+```
+
 ## Checkout my portfolio
 
 https://milamirian.com
+

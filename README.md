@@ -1,6 +1,10 @@
 # COMIC HEROES
 
-A hackathon project created utilizing the data from two public APIs - namely; programmer jokes and superheroes. 
+A **solo-hackathon** project utilizing the data from two public **APIs** - namely; programmer jokes and superheroes.
+
+* Developed with **mobile-first** methodology using **HTML5**, **CSS3** & **Flexbox** to ensure fully responsive across screen sizes.
+* Utilized **JavaScript (ES6)** to create DOM elements for each functionality based on user input.
+* Placed restrictions to avoid excessive **API GET** requests via **AJAX**.
 
 ## Technologies used
 
@@ -36,4 +40,3 @@ cd porfolio
 ## Checkout my portfolio
 
 https://milamirian.com
-

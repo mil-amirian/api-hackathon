@@ -33,8 +33,8 @@ https://mil-amirian.github.io/comic-heroes/
 #### Clone the repository
 
 ```bash
-git clone https://github.com/mil-amirian/portfolio.git
-cd porfolio
+git clone https://github.com/mil-amirian/comic-heroes.git
+cd comic-heroes
 ```
 
 ## Checkout my portfolio

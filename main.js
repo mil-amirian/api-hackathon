@@ -9,7 +9,8 @@ let randomBtn = document.querySelector('.randomBtn')
 let memeBtn = document.querySelector('.memeBtn')
 let memeModal = document.querySelector('.meme-modal')
 let memeModalContent = document.querySelector('.meme-modal-content')
-let memeTextArea = document.getElementById('meme-input')
+let memeTextArea = document.getElementById('meme-input-setup')
+let memeTextAreaPunchline = document.getElementById('meme-input-punchline')
 let memeSubmit = document.querySelector('.meme-input')
 let cancelBtn = document.querySelector('.close-modal')
 
@@ -52,6 +53,11 @@ function getRandomJoke() {
             },
             error: function(error) {
                 console.error(error)
+                randomBtn.addEventListener('click', generateRandomHero)
+                randomBtn.style.backgroundColor = '#fa8500'
+                joke.setup = "Please Check Your Internet Connection"
+                joke.punchline = "Error getting data"
+
             }
         })
     }, 1000)
@@ -130,7 +136,7 @@ function createHeroDomElements() {
     }, 0)
 }
 
-function createMeme(userInput, selectedHero) {
+function createMeme(userInputSetup, userMeInputPunchline, selectedHero) {
     let heroMatch = null
     for (let i = 0; i < superHeroList.length; i++) {
         if (selectedHero === superHeroList[i].name) {
@@ -144,14 +150,17 @@ function createMeme(userInput, selectedHero) {
     let heroImage = document.createElement('div')
     heroImage.classList.add('image-container')
     heroImage.style.backgroundImage = "url" + "(" + `${heroMatch.image}` + ")"
-    heroImage.style.height = '350px'
+    heroImage.style.height = '450px'
     heroImage.style.width = '100%'
     heroImage.style.padding = '0px'
     heroImage.style.margin = '0px'
-    let memeCaption = document.createElement('h2')
-    memeCaption.textContent = userInput
-    memeCaption.className = 'meme-caption'
-    heroImage.append(memeCaption)
+    let memeCaptionSetup = document.createElement('h2')
+    let memeCaptionPunchline = document.createElement('h2')
+    memeCaptionSetup.textContent = userInputSetup
+    memeCaptionSetup.className = 'meme-caption-setup'
+    memeCaptionPunchline.textContent = userMeInputPunchline
+    memeCaptionPunchline.className = 'meme-caption-punchline'
+    heroImage.append(memeCaptionSetup, memeCaptionPunchline)
     superheroContainer.append(heroImage)
     heroCardContainer.append(superheroContainer)
 }
@@ -172,8 +181,9 @@ function showMemeModal() {
 
 function checkModalUserEntryIsNotEmpty() {
     memeCharacterSelected = memeSuperheroMenu.value
-    userMemeInputText = memeTextArea.value
-    createMeme(userMemeInputText, memeCharacterSelected)
+    userMemeInputSetup = memeTextArea.value
+    userMemeInputpunchline = memeTextAreaPunchline.value
+    createMeme(userMemeInputSetup, userMemeInputpunchline, memeCharacterSelected)
     memeModal.classList.add('hidden')
 }
 
@@ -184,7 +194,7 @@ function ifModalUserEntryIsEmpty() {
 }
 
 function memeCreator() {
-    if (memeTextArea.value && memeSuperheroMenu.value !== 'Select your hero') {
+    if (memeTextArea.value && memeTextAreaPunchline.value && memeSuperheroMenu.value !== 'Select your hero') {
         checkModalUserEntryIsNotEmpty()
     } else {
         ifModalUserEntryIsEmpty()
